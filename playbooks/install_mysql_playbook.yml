@@ -1,0 +1,15 @@
+---
+- hosts: Localhost
+  user: user
+  sudo: yes
+
+  tasks:
+    - name: Install MySQL
+      action: yum name={{ item }}
+      with_items:
+        - MySQL-python
+        - mysql
+        - mysql-server
+
+    - name: Start the MySQL service
+      action: service name=mysqld state=started
